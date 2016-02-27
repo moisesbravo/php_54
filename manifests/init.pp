@@ -23,8 +23,7 @@ class php_54 {
 
   package { $packages:
     ensure => present,
-    require => Exec["apt-get update"],
-    before => File["/etc/php5/apache2/conf.d/timezone.ini"],
+    require => Exec["apt-get update"]
   }
 
 
@@ -39,14 +38,6 @@ class php_54 {
 
       }
 
-  # set php timezone
-  file { "/etc/php5/apache2/conf.d/timezone.ini":
-    ensure => "present",
-     replace => 'no',
-    content => "date.timezone = 'America/Santiago'",
-    mode => 644,
-    require => Package[$packages],
-  }
 
 
 
